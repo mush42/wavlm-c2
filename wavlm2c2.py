@@ -1,10 +1,7 @@
-def adir(obj):
-    _ = [print(d) for d in dir(obj) if not d.startswith("_")]
-
 import numpy as np
 import torch
 
-from ctranslate2.converters.transformers import BartLoader, register_loader
+from ctranslate2.converters.transformers import Wav2Vec2Loader, register_loader
 from ctranslate2.specs.wav2vec2_spec import Wav2Vec2Spec
 from ctranslate2.specs import (
     attention_spec,
@@ -15,7 +12,7 @@ from ctranslate2.specs import (
 
 
 @register_loader("WavLMConfig")
-class WavLMLoader(BartLoader):
+class WavLMLoader(Wav2Vec2Loader):
     @property
     def architecture_name(self):
         return "WavLMForCTC"
